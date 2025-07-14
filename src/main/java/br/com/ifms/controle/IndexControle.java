@@ -98,9 +98,7 @@ public class IndexControle extends HttpServlet {
 		Usuario usuarioGravado = usuarioDAO.inserirUsuario(usuario);
 		
 		
-		// busca o papel padrão para atribuir ao usuário
 		Papel papel = papelDAO.buscarPapelPorTipo("USER");
-		// atribui papel padrão ao usuário recém gravado
 		papelDAO.atribuirPapelUsuario(papel, usuarioGravado);
 		
 		

@@ -52,7 +52,7 @@ public class Login extends HttpServlet {
 			case "formLogin":
 				formLogin(request, response);
 				break;
-			case "logout":// aula 19
+			case "logout":
 				logout(request, response);
 				break;
 			}
@@ -86,22 +86,21 @@ public class Login extends HttpServlet {
 		Locale locale = (Locale) Config.get(request.getSession(), Config.FMT_LOCALE);
 				
 		
-		if (usuario != null && usuario.isAtivo()) { // login válido
+		if (usuario != null && usuario.isAtivo()) { 
 			
 			boolean comparacao = Criptografia.compararSenha(senha, usuario.getPassword());
 			
-			if(comparacao){ // senha válida
+			if(comparacao){ 
 				
 				DetalheUsuario detalheUsuario = new DetalheUsuario(usuario);
 				
 				HttpSession session = request.getSession();
 				session.setAttribute("usuarioLogado", detalheUsuario);
-				//path = "publica/publica-logado.jsp";
-				//aula 18
+
 				Autorizacao autorizacao = new Autorizacao();
 				path = autorizacao.indexPerfil(detalheUsuario);
 				
-			} else { // senha inválida ou não ativo
+			} else { 
 				path = "publica/publica-login.jsp";				
 				String texto = I18nUtil.getMensagem(locale, "publica-login-invalido");
 				request.setAttribute("mensagem", texto);

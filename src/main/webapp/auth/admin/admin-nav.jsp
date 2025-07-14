@@ -15,20 +15,26 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarNav">
 		
-			 <ul class="nav navbar-nav">
-                    
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                        	<fmt:message key="admin-nav-management" />
-                        </a>
-                        <div class="dropdown-menu">
-                            <a href="${pageContext.request.contextPath}/auth/admin?acao=listar" class="dropdown-item">
-                            	<fmt:message key="admin-nav-users" />
-                            </a>
-                        </div>
-                    </li>
-                </ul>
-                
+		<ul class="nav navbar-nav">
+		    <li class="nav-item dropdown">
+		        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+		            <fmt:message key="admin-nav-management" />
+		        </a>
+		        <div class="dropdown-menu">
+		            <a href="${pageContext.request.contextPath}/auth/admin?acao=listar" class="dropdown-item">
+		                <fmt:message key="admin-nav-users" />
+		            </a>
+		            <a href="${pageContext.request.contextPath}/auth/admin?acao=listar-filmes" class="dropdown-item">
+		                Listar Filmes
+		            </a>
+					<li class="nav-item">
+						<a class="nav-link" href="${pageContext.request.contextPath}/auth/admin?acao=novo-filme">Novo Filme</a>
+					</li>
+
+		        </div>
+		    </li>
+		</ul>
+         
 			<jsp:include page="/auth/auth-generica-dropdown-conta.jsp" />
 		</div>
 	</div>
