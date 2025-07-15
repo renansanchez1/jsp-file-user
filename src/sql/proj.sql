@@ -31,3 +31,12 @@ CREATE TABLE usuario_papel
 INSERT INTO papel (tipo_papel) VALUES ('ADMIN');
 INSERT INTO papel (tipo_papel) VALUES ('USER');
 INSERT INTO papel (tipo_papel) VALUES ('BIBLIO');
+
+
+
+
+CREATE TABLE filme (
+    id SERIAL PRIMARY KEY,
+    nome VARCHAR(255) NOT NULL,
+    classificacao VARCHAR(50) NOT NULL
+);
