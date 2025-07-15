@@ -12,7 +12,7 @@
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <jsp:include page="/publica/publica-nav.jsp" />
+	<jsp:include page="/auth/auth-generica-nav.jsp" />
 
     <div class="container mt-4">
         <div class="row">

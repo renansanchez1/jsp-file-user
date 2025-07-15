@@ -64,6 +64,9 @@ public class AdminControle extends HttpServlet {
                 case "novo-filme":
                     novoFilme(request, response);
                     break;
+                case "apagarFilme":
+                	apagarFilme(request, response);
+                	break;
                 default:
                     response.sendRedirect(request.getContextPath() + "/auth/admin?acao=novo-filme");
                     break;
@@ -73,7 +76,17 @@ public class AdminControle extends HttpServlet {
         }
     }
 
-    @Override
+    private void apagarFilme(HttpServletRequest request, HttpServletResponse response)
+            throws SQLException, ServletException, IOException {
+        long id = Long.parseLong(request.getParameter("id"));
+        Filme filme = new Filme();
+        filme.setId(id);
+        filmeDAO.apagarFilme(filme);
+        String path = request.getContextPath() + request.getServletPath() + "?acao=listar-filmes";
+        response.sendRedirect(path);
+    }
+
+	@Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
@@ -117,11 +130,9 @@ public class AdminControle extends HttpServlet {
         String nome = request.getParameter("nome");
         String classificacao = request.getParameter("classificacao");
 
-        // Log para depuração
         System.out.println("Nome recebido: " + nome);
         System.out.println("Classificação recebida: " + classificacao);
 
-        // Validação
         if (nome == null || nome.trim().isEmpty()) {
             request.setAttribute("mensagem", "Erro: O nome do filme é obrigatório!");
             RequestDispatcher dispatcher = request.getRequestDispatcher("auth/admin/admin-adicionar-filme.jsp");
@@ -139,7 +150,7 @@ public class AdminControle extends HttpServlet {
         filmeDAO.inserirFilme(filme);
 
         request.setAttribute("mensagem", "Filme cadastrado com sucesso!");
-        RequestDispatcher dispatcher = request.getRequestDispatcher("auth/admin/admin-adicionar-filme.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("admin/admin-adicionar-filme.jsp");
         dispatcher.forward(request, response);
     }
 

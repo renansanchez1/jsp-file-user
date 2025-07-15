@@ -48,10 +48,7 @@
 									   href="${pageContext.request.contextPath}/auth/admin?acao=apagarFilme&id=${filme.id}">
 										Apagar
 									</a>
-									<a class="btn btn-outline-primary btn-sm"
-									   href="${pageContext.request.contextPath}/auth/admin?acao=iniciarEditarFilme&id=${filme.id}">
-										Editar
-									</a>
+
 								</td>
 							</tr>
 						</c:forEach>
